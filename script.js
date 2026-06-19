@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
   const randNum = Math.floor(Math.random() * 10); // 0-9
 
@@ -9,13 +12,8 @@ function getComputerChoice(){
     return 'scissors';
   }
 }
-console.log(getComputerChoice());
 
 function getHumanChoice(){
   const choice = prompt('Enter choice:', 'rock');
   return choice;
 }
-console.log(getHumanChoice());
-
-let humanScore = 0;
-let computerScore = 0;
