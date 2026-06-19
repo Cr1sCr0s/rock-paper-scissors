@@ -1,11 +1,13 @@
-playGame();
+playGame(); // function call, starts game
 
 function playGame(){
   let humanScore = 0;
   let computerScore = 0;
 
+  // plays 5 rounds
   for(let i=0; i<5; i++){
     const winner = playRound(getHumanChoice(), getComputerChoice());
+    // increments score of the winner
     switch(winner){
       case 'human':
         humanScore++;
@@ -16,9 +18,11 @@ function playGame(){
       default:
         break;
     }
+    // prints updates scores
     console.log(`Player Score: ${humanScore}\nComputer Score: ${computerScore}`);
   }
 
+  // prints results of the game
   console.log('GAME OVER');
   if(humanScore > computerScore){
     console.log('WINNER: human');
@@ -29,6 +33,7 @@ function playGame(){
   }
 }
 
+// plays one round
 function playRound(humanChoice, computerChoice){
   humanChoice.toLowerCase();
   console.log(`The computer chose ${computerChoice}`);
@@ -89,8 +94,11 @@ function playRound(humanChoice, computerChoice){
 }
 
 function getComputerChoice(){
-  const randNum = Math.floor(Math.random() * 10); // 0-9
+  // this var gets a random number from 0 to 9;
+  // ex: 0.59 -> 5.9 -> 5
+  const randNum = Math.floor(Math.random() * 10);
 
+  // rock -> 4/10, paper -> 3/10, scissors -> 3/10
   if(randNum % 3 === 0){
     return 'rock';
   }else if(randNum % 3 === 1){
