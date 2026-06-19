@@ -1,11 +1,39 @@
-let humanScore = 0;
-let computerScore = 0;
+playGame();
 
-playRound(getHumanChoice(), getComputerChoice());
+function playGame(){
+  let humanScore = 0;
+  let computerScore = 0;
+
+  for(let i=0; i<5; i++){
+    const winner = playRound(getHumanChoice(), getComputerChoice());
+    switch(winner){
+      case 'human':
+        humanScore++;
+        break;
+      case 'computer':
+        computerScore++;
+        break;
+      default:
+        break;
+    }
+    console.log(`Player Score: ${humanScore}\nComputer Score: ${computerScore}`);
+  }
+
+  console.log('GAME OVER');
+  if(humanScore > computerScore){
+    console.log('WINNER: human');
+  }else if(humanScore < computerScore){
+    console.log('WINNER: computer');
+  }else{
+    console.log('WINNER: none');
+  }
+}
 
 function playRound(humanChoice, computerChoice){
   humanChoice.toLowerCase();
   console.log(`The computer chose ${computerChoice}`);
+
+  let winner = 'none';
 
   switch(humanChoice){
     case 'rock':
@@ -15,11 +43,11 @@ function playRound(humanChoice, computerChoice){
           break;
         case 'paper':
           console.log('You lose! Paper beats rock.');
-          computerScore++;
+          winner = 'computer';
           break;
         case 'scissors':
           console.log('You won! Rock beats scissors.');
-          humanScore++;
+          winner = 'human';
           break;
       }
       break;
@@ -28,14 +56,14 @@ function playRound(humanChoice, computerChoice){
       switch(computerChoice){
         case 'rock':
           console.log('You won! Paper beats rock.');
-          humanScore++;
+          winner = 'human';
           break;
         case 'paper':
           console.log('Tie!');
           break;
         case 'scissors':
           console.log('You lose! Scissors beats paper.');
-          computerScore++;
+          winner = 'computer';
           break;
       }
       break;
@@ -44,11 +72,11 @@ function playRound(humanChoice, computerChoice){
       switch(computerChoice){
         case 'rock':
           console.log('You lose! Rock beats paper.');
-          computerScore++;
+          winner = 'computer';
           break;
         case 'paper':
           console.log('You won! Scissors beats paper.');
-          humanScore++;
+          winner = 'human';
           break;
         case 'scissors':
           console.log('Tie!');
@@ -57,7 +85,7 @@ function playRound(humanChoice, computerChoice){
       break;
   }
 
-  console.log(`Player Score: ${humanScore}\nComputer Score: ${computerScore}`);
+  return winner;
 }
 
 function getComputerChoice(){
