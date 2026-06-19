@@ -1,5 +1,5 @@
 function getComputerChoice(){
-  let randNum = Math.floor(Math.random() * 10); // 0-9
+  const randNum = Math.floor(Math.random() * 10); // 0-9
 
   if(randNum % 3 === 0){
     return "rock";
