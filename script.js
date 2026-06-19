@@ -57,6 +57,7 @@ function playRound(humanChoice, computerChoice){
       break;
   }
 
+  console.log(`Player Score: ${humanScore}\nComputer Score: ${computerScore}`);
 }
 
 function getComputerChoice(){
